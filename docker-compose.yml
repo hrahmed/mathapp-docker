@@ -1,0 +1,32 @@
+#
+# Description:
+# ------------
+#
+# This is a small test case that creates an enterprise manager with its database,
+# a webview, and ACC Config Server.
+#
+
+mathclient:
+  image: mathclient-java:1
+  links:
+    - mathproxy:mathproxy
+  ports:
+    - "8090:8090"
+
+mathproxy:
+  image: mathproxy-java:1
+  links:
+    - mathsimple:mathsimple
+    - mathcomplex:mathcomplex
+  ports:
+    - "8091:8091"
+
+mathsimple:
+  image: mathsimple-java:1
+  ports:
+    - "8092:8092"
+
+mathcomplex:
+  image: mathcomplex-java:1
+  ports:
+    - "8093:8093"

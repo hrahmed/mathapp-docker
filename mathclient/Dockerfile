@@ -2,26 +2,26 @@ FROM tomcat:7-jre8
 
 MAINTAINER guenter.grossberger@ca.com
 
-ENV PROXY_HOST=localhost
-ENV PROXY_PORT=8088
-ENV SIMPLE_HOST=localhost
-ENV SIMPLE_PORT=8088
-ENV COMPLEX_HOST=localhost
-ENV COMPLEX_PORT=8088
-ENV DOTNET_HOST=localhost
-ENV DOTNET_PORT=8088
-ENV NODE_HOST=localhost
-ENV NODE_PORT=8088
+ENV PROXY_HOST=mathproxy
+ENV PROXY_PORT=8091
+ENV SIMPLE_HOST=mathsimple
+ENV SIMPLE_PORT=8092
+ENV COMPLEX_HOST=mathcomplex
+ENV COMPLEX_PORT=8093
+ENV DOTNET_HOST=mathdotnet
+ENV DOTNET_PORT=80
+ENV NODE_HOST=mathnode
+ENV NODE_PORT=8094
 
 ENV WILY_HOME=$CATALINA_HOME/wily
 ENV INTROSCOPE_VERSION=10.5.1.8
 ENV EM_HOST=10.130.179.127
 ENV EM_PORT=5001
-ENV AGENT_NAME=MathApp
+ENV AGENT_NAME=MathClient
 ENV HEAP=2048m
 
 # install mathapp application
-COPY MathClient.war MathComplexBackend.war MathProxy.war MathSimpleBackend.war $CATALINA_HOME/webapps/
+COPY MathClient.war $CATALINA_HOME/webapps/
 
 COPY tomcat-users.xml $CATALINA_HOME/conf
 
@@ -46,6 +46,6 @@ COPY start.sh $ACC_HOME/
 
 #ADD acc-controller-package.tar $ACC_HOME/
 
-EXPOSE 8088
+EXPOSE 8090
 
 CMD ["/root/start.sh"]
