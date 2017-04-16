@@ -18,7 +18,7 @@ else
 fi
 
 # set mathapp properties
-MATHAPP_ARGS="-DproxyHost=${PROXY_HOST} -DproxyPort=${PROXY_PORT} -DsimpleHost=${SIMPLE_HOST} -DsimplePort=${SIMPLE_PORT} -DcomplexHost=${COMPLEX_HOST} -DcomplexPort=${COMPLEX_PORT}"
+MATHAPP_ARGS="-DproxyHost=${PROXY_HOST} -DproxyPort=${PROXY_PORT} -DsimpleHost=${SIMPLE_HOST} -DsimplePort=${SIMPLE_PORT} -DcomplexHost=${COMPLEX_HOST} -DcomplexPort=${COMPLEX_PORT} -DnodeHost=${NODE_HOST} -DnodePort=${NODE_PORT}"
 
 # now add the APM agent to Tomcat startup parameters
 export CATALINA_OPTS="$CATALINA_OPTS -Xmx$HEAP -javaagent:$WILY_HOME/Agent.jar -Dcom.wily.introscope.agentProfile=$WILY_HOME/core/config/IntroscopeAgent.profile -Dcom.wily.introscope.agent.agentName=$AGENT_NAME $AGENT_HOSTNAME_ARG $MATHAPP_ARGS"

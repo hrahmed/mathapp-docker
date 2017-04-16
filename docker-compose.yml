@@ -18,6 +18,7 @@ mathproxy:
   links:
     - mathsimple:mathsimple
     - mathcomplex:mathcomplex
+    - mathnode:mathnode
   ports:
     - "8091:8091"
 
@@ -30,3 +31,8 @@ mathcomplex:
   image: mathcomplex-java:1
   ports:
     - "8093:8093"
+
+mathnode:
+  image: math-node:1
+  ports:
+    - "8999:8999"
