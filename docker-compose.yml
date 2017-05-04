@@ -12,6 +12,8 @@ mathclient:
     - mathproxy:mathproxy
   ports:
     - "8090:8090"
+  environment:
+    - EM_HOST=apm-docker
 
 mathproxy:
   image: mathproxy-java:1
@@ -21,18 +23,27 @@ mathproxy:
     - mathnode:mathnode
   ports:
     - "8091:8091"
+  environment:
+    - EM_HOST=apm-docker
 
 mathsimple:
   image: mathsimple-java:1
   ports:
     - "8092:8092"
+  environment:
+    - EM_HOST=apm-docker
 
 mathcomplex:
   image: mathcomplex-java:1
   ports:
     - "8093:8093"
+  environment:
+    - EM_HOST=apm-docker
 
 mathnode:
   image: math-node:1
   ports:
     - "8999:8999"
+  environment:
+    - COLLECTOR_AGENT_HOST=apm-docker
+    - COLLECTOR_AGENT_PORT=5005
