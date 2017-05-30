@@ -18,10 +18,9 @@ RUN npm install
 ENV LINK=g++
 
 # use APP_NAME so we can concatenate with Docker id ($HOSTNAME), CA_APM_PROBENAME would override that
-ENV CA_APM_PROBENAME=Mathapp-Node
-
-ENV COLLECTOR_AGENT_HOST=collector
-ENV COLLECTOR_AGENT_PORT=5005
+ENV CA_APM_PROBENAME=Mathapp-Node \
+  COLLECTOR_AGENT_HOST=collector \
+  COLLECTOR_AGENT_PORT=5005
 
 COPY start_node.sh .
 
