@@ -6,6 +6,15 @@
 # a webview, and ACC Config Server.
 #
 
+mathbaseline:
+  image: math-baseline
+  links:
+    - mathclient:mathclient
+  environment:
+    - CLIENT_HOST=mathclient
+    - CLIENT_PORT=8090
+    - SCRIPT=mathapp-baseline.jmx
+
 mathclient:
   image: mathclient-java:1
   links:
@@ -13,7 +22,8 @@ mathclient:
   ports:
     - "8090:8090"
   environment:
-    - EM_HOST=apm-docker
+#    - EM_HOST=apm-docker.ca.com
+    - EM_HOST=10.132.141.59
 
 mathproxy:
   image: mathproxy-java:1
@@ -24,26 +34,28 @@ mathproxy:
   ports:
     - "8091:8091"
   environment:
-    - EM_HOST=apm-docker
+#    - EM_HOST=apm-docker.ca.com
+    - EM_HOST=10.132.141.59
 
 mathsimple:
   image: mathsimple-java:1
   ports:
     - "8092:8092"
   environment:
-    - EM_HOST=apm-docker
+#    - EM_HOST=apm-docker.ca.com
+    - EM_HOST=10.132.141.59
 
 mathcomplex:
   image: mathcomplex-java:1
   ports:
     - "8093:8093"
   environment:
-    - EM_HOST=apm-docker
+    - EM_HOST=apm-docker.ca.com
 
 mathnode:
   image: math-node:1
   ports:
     - "8999:8999"
   environment:
-    - COLLECTOR_AGENT_HOST=apm-docker
+    - COLLECTOR_AGENT_HOST=apm-docker.ca.com
     - COLLECTOR_AGENT_PORT=5005
