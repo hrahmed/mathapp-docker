@@ -18,12 +18,11 @@ RUN npm install
 ENV LINK=g++
 
 # use APP_NAME so we can concatenate with Docker id ($HOSTNAME), CA_APM_PROBENAME would override that
-ENV CA_APM_PROBENAME=Mathapp-Node
+ENV CA_APM_PROBENAME=Mathapp-Node \
+  COLLECTOR_AGENT_HOST=collector \
+  COLLECTOR_AGENT_PORT=5005
 
-ENV COLLECTOR_AGENT_HOST=collector
-ENV COLLECTOR_AGENT_PORT=5005
-
-COPY start_node.sh .
+COPY start.sh .
 
 # install from local file
 #COPY nodejs-probe-leo_node-20161028.231113-123.tgz ca-apm-probe.tgz
